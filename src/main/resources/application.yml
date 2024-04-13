@@ -1,0 +1,26 @@
+server:
+ port: 8081
+ address: localhost
+ 
+spring:
+  application:
+    name: SmartPay
+#  profiles:
+#      active: test
+#  config:
+#    import: optional:CONFIGURATION-SERVER:${configuration.url}    
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    name: SmartPay
+    password: root
+    platform: mysql
+    url: jdbc:mysql://localhost:3306/smartpay?createDatabaseIfNotExist=false&autoReconnect=true&useSSL=false
+    username: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
