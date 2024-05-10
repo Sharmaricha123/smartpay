@@ -24,3 +24,17 @@ spring:
       hibernate:
         format_sql: true
     show-sql: true
+    
+app:
+  api:
+    swagger:
+      enable: true
+  message: This is properties configuration for ${spring.application.name} from PRIMARY environment 
+  jwt:
+    secret:
+      key: afafasfafafasfasfasfafacasdasfasxASFACASDFACASDFASFASFDAFASFASDAADSCSDFADCVSGCFVADXCcadwavfsfarvf 
+    token:
+      validity: 600000
+  refresh:
+      token:
+        validity: 12000000    

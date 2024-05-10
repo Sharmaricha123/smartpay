@@ -24,10 +24,17 @@ import com.smartpay.enums.EnumValue.BankingServiceStatus;
 import com.smartpay.enums.EnumValue.IsActive;
 import com.smartpay.model.roleandprivilege.Role;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Data
 public class User extends BaseEntity {
 	@Id
 	@GeneratedValue(generator = "idGen")
@@ -39,9 +46,9 @@ public class User extends BaseEntity {
 	@Column(name = "Customer_Id", length = 10)
 	private long customerId;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss", locale = "en-in", timezone = "IST")
+//	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss", locale = "en-in", timezone = "IST")
 	@Column(name = "DOB")
-	private Date dateOfBirth;
+	private String dateOfBirth;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "Is_Active", length = 10)
@@ -54,7 +61,7 @@ public class User extends BaseEntity {
 	@Column(name = "Email_Id")
 	private String emailId;
 
-	@Column(name = "First_Name", length = 20)
+	@Column(name = "First_Name", length = 5)
 	private String firstName;
 
 	@Column(name = "Middle_Name", length = 10)
@@ -80,7 +87,7 @@ public class User extends BaseEntity {
 	@Column(name = "Username", length = 20)
 	private String username;
 
-//	@OneToOne
-//	private MainWallet mainWallet;
+	@OneToOne
+	private MainWallet mainWallet;
 
 }

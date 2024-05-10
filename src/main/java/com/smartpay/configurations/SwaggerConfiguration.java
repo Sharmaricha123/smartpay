@@ -45,10 +45,10 @@ public class SwaggerConfiguration {
 	
 	public static final Contact DEFAULT_CONTACT = new Contact("SmartPay", "http://localhost:6060/v1/",
             "saurav.tit@gmail.com");
-
-    public static final ApiInfo API_DEFAULT = new ApiInfo("SmartPay Api Documentation",
-            "API Documentation Of SmartPay", "1.0", "urn:tos", DEFAULT_CONTACT, "SmartPay 1.0",
-            "www.smartpay.com", new ArrayList<VendorExtension>());
+	
+	 public static final ApiInfo API_DEFAULT = new ApiInfo("SmartPay Api Documentation",
+	            "API Documentation Of SmartPay", "1.0", "urn:tos", DEFAULT_CONTACT, "SmartPay 1.0",
+	            "www.smartpay.com", new ArrayList<VendorExtension>());
 
     private static final Set<String> DEFAULT_PRODUCES_AND_CONSUMES = new HashSet<String>(
             Arrays.asList("application/json", "application/xml"));
