@@ -10,6 +10,9 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
+import lombok.Data;
+
+@Data
 public class Response {
 	
 	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
@@ -20,5 +23,16 @@ public class Response {
     private boolean processStatus;
     private String message;
     private Object datasource;
+	public Response(LocalDateTime timestamp, HttpStatus statusCode, boolean processStatus, String message,
+			Object datasource) {
+		super();
+		this.timestamp = timestamp;
+		this.statusCode = statusCode;
+		this.processStatus = processStatus;
+		this.message = message;
+		this.datasource = datasource;
+	}
+    
+    
 
 }

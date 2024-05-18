@@ -14,20 +14,19 @@ public class UserDtoValidation {
 
 	public static List<String> errorList = new ArrayList<>();
 
-	public static void validateUserRegistrationRequest(UserDto userDto) {
+	public static List<String> validateUserRegistrationRequest(UserDto userDto) {
 		validateFirstName(userDto.getFirstName());
 		validateMiddleName(userDto.getMiddleName());
 		validateLastName(userDto.getLastName());
 		validateMobileNo(userDto.getMobileNo());
 		validateDateOfBirth(userDto.getDateOfBirth());
 		validateEmailId(userDto.getEmailId());
-
+		return errorList;
 	}
 
-	
 	private static void validateFirstName(String firstName) {
 		if (StringUtils.isNotBlank(firstName)) {
-			if (firstName.length() < 1 || firstName.length() > 150) {
+			if (firstName.length() < 1 || firstName.length() > 5) {
 				errorList.add(UserRegistrationErrorMsg.FIRSTNAMELENGTH.getValue());
 
 			} else {
@@ -43,11 +42,13 @@ public class UserDtoValidation {
 	}
 
 	private static void validateMiddleName(String middleName) {
-		if (middleName.length() < 1 || middleName.length() > 150) {
-			errorList.add(UserRegistrationErrorMsg.MIDDLENAMELENGTH.getValue());
-		} else {
-			if (!middleName.matches(Constant.namePattern)) {
-				errorList.add(UserRegistrationErrorMsg.INVALIDMIDDLENAME.getValue());
+		if (StringUtils.isNotBlank(middleName)) {
+			if (middleName.length() < 1 || middleName.length() > 10) {
+				errorList.add(UserRegistrationErrorMsg.MIDDLENAMELENGTH.getValue());
+			} else {
+				if (!middleName.matches(Constant.namePattern)) {
+					errorList.add(UserRegistrationErrorMsg.INVALIDMIDDLENAME.getValue());
+				}
 			}
 		}
 
@@ -55,7 +56,7 @@ public class UserDtoValidation {
 
 	private static void validateLastName(String lastName) {
 		if (StringUtils.isNotBlank(lastName)) {
-			if (lastName.length() < 1 || lastName.length() > 150) {
+			if (lastName.length() < 1 || lastName.length() > 10) {
 				errorList.add(UserRegistrationErrorMsg.LASTNAMELENGTH.getValue());
 			} else {
 				if (!lastName.matches(Constant.namePattern)) {
@@ -98,10 +99,10 @@ public class UserDtoValidation {
 		}
 
 	}
-	
+
 	private static void validateEmailId(String emailId) {
 		if (StringUtils.isNotBlank(emailId)) {
-			if (emailId.length() < 150) {
+			if (emailId.length() >20) {
 				errorList.add(UserRegistrationErrorMsg.EMAILLENGTH.getValue());
 			} else {
 				if (!emailId.matches(Constant.emailIdPattern)) {
@@ -114,6 +115,5 @@ public class UserDtoValidation {
 		}
 
 	}
-
 
 }

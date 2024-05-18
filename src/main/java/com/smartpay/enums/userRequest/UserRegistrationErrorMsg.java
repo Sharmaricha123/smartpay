@@ -3,12 +3,12 @@ package com.smartpay.enums.userRequest;
 public enum UserRegistrationErrorMsg {
 
 	FIRSTNAMEREQUIRED("first name is required"),
-	FIRSTNAMELENGTH(" first name length should be more than 1 and less than 150"),
+	FIRSTNAMELENGTH(" first name length should be more than 1 and less than 5"),
 	INVALIDFIRSTNAME("invalid first name"),
-	MIDDLENAMELENGTH(" middle name length should be more than 1 and less than 150"),
+	MIDDLENAMELENGTH(" middle name length should be more than 1 and less than 10"),
 	INVALIDMIDDLENAME("invalid middle name"),
 	LASTNAMEREQUIRED("last name is required"),
-	LASTNAMELENGTH(" last name length should be more than 1 and less than 150"), 
+	LASTNAMELENGTH(" last name length should be more than 1 and less than 10"), 
 	INVALIDLASTNAME("invalid last name"),
 	MOBILENUMBERREQUIRED("mobile number is required"),
 	MOBILENUMBERLENGTH(" mobile number should be of 10 digits"),
@@ -16,7 +16,7 @@ public enum UserRegistrationErrorMsg {
 	DOBREQUIRED("date of birth required"),
 	INVALIDDATEOFBIRTH("invalid date of birth"), 
 	EMAILREQUIRED("email is required"),
-	EMAILLENGTH("length of email id should not exceed 150"),
+	EMAILLENGTH("length of email id should not exceed 20"),
 	INVALIEMAIL("invalid email id");
 
 	private String value;

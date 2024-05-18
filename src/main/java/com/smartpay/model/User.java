@@ -4,22 +4,26 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.smartpay.enums.EnumValue.BankingServiceStatus;
 import com.smartpay.enums.EnumValue.IsActive;
 import com.smartpay.model.roleandprivilege.Role;
@@ -35,6 +39,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name="user")
 public class User extends BaseEntity {
 	@Id
 	@GeneratedValue(generator = "idGen")
@@ -48,7 +53,7 @@ public class User extends BaseEntity {
 
 //	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss", locale = "en-in", timezone = "IST")
 	@Column(name = "DOB")
-	private String dateOfBirth;
+	private Date dateOfBirth;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "Is_Active", length = 10)
@@ -78,6 +83,9 @@ public class User extends BaseEntity {
 
 	@Column(name = "Password", length = 20)
 	private String password;
+	
+	@Column(name="User_Role",length=20)
+	private String role;
 
 	@ManyToMany
 	@JoinTable(name = "user_roles", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
@@ -87,7 +95,8 @@ public class User extends BaseEntity {
 	@Column(name = "Username", length = 20)
 	private String username;
 
-	@OneToOne
+	@JsonIgnore
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private MainWallet mainWallet;
 
 }
