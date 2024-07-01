@@ -3,7 +3,14 @@ package com.smartpay.enums;
 
 
 public enum ErrorMsg {
-	Error001("Invalid input!! Please check");
+	Error001("Invalid input!! Please check"),
+	Error002("User already registered!!"),
+	Error003("Invalid Password!!"),
+	Error004("Invalid Credentials"),
+	Error005("Error in sending Otp!!!"),
+	Error006("User not found!!"),
+	Error007("Invalid OTP!!!"),
+	Error008("Invalid user!!");
 	
 	private String value;
 	

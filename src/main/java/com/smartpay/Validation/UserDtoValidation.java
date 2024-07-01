@@ -26,7 +26,7 @@ public class UserDtoValidation {
 
 	private static void validateFirstName(String firstName) {
 		if (StringUtils.isNotBlank(firstName)) {
-			if (firstName.length() < 1 || firstName.length() > 5) {
+			if (firstName.length() < 1 || firstName.length() > 10) {
 				errorList.add(UserRegistrationErrorMsg.FIRSTNAMELENGTH.getValue());
 
 			} else {

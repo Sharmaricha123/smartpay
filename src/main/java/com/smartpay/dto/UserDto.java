@@ -24,5 +24,6 @@ public class UserDto {
 	private String mobileNo;
 	private String dateOfBirth;
 	private String emailId;
+//	private String parentUserName;
 
 }

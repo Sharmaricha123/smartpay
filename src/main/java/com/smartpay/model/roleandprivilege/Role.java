@@ -18,9 +18,16 @@ import javax.persistence.Table;
 import com.smartpay.model.BaseEntity;
 import com.smartpay.model.User;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="Role")
 @Entity
 public class Role extends BaseEntity {

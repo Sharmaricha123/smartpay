@@ -55,18 +55,18 @@ public class User extends BaseEntity {
 	@Column(name = "DOB")
 	private Date dateOfBirth;
 
-	@Enumerated(EnumType.STRING)
+//	@Enumerated(EnumType.STRING)
 	@Column(name = "Is_Active", length = 10)
-	private IsActive isActive;
+	private String isActive;
 
-	@Enumerated(EnumType.STRING)
+//	@Enumerated(EnumType.STRING)
 	@Column(name = "Banking_Service_Status", length = 5)
-	private BankingServiceStatus bankingServiceStatus;
+	private String bankingServiceStatus;
 
 	@Column(name = "Email_Id")
 	private String emailId;
 
-	@Column(name = "First_Name", length = 5)
+	@Column(name = "First_Name", length = 10)
 	private String firstName;
 
 	@Column(name = "Middle_Name", length = 10)
@@ -81,12 +81,14 @@ public class User extends BaseEntity {
 	@Column(name = "Parent_User_Name", length = 20)
 	private String parentUserName;
 
-	@Column(name = "Password", length = 20)
+	@JsonIgnore
+	@Column(name = "Password", length = 255)
 	private String password;
 	
 	@Column(name="User_Role",length=20)
 	private String role;
 
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "user_roles", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "role_id") })

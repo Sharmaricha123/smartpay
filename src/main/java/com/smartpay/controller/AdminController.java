@@ -33,18 +33,19 @@ public class AdminController {
 	@PostMapping("/register")
 	public ResponseEntity<Response> registerAdmin(@Valid @RequestBody UserDto userDto) {
 		List<String> errList = UserDtoValidation.validateUserRegistrationRequest(userDto);
-		User result = null;
+		
 
 		if (errList.isEmpty()) {
-			result = adminService.registerAdmin(userDto);
+			User savedAdmin = adminService.registerAdmin(userDto);
+			return new ResponseEntity<Response>(new Response(LocalDateTime.now(), HttpStatus.CREATED, true,
+					UserRegistrationSuccessMsg.Success001.getValue(), savedAdmin), HttpStatus.CREATED);
 
 		} else {
 			return new ResponseEntity<Response>(new Response(LocalDateTime.now(), HttpStatus.BAD_REQUEST, false,
 					ErrorMsg.Error001.getValue(), errList), HttpStatus.BAD_REQUEST);
 		}
 
-		return new ResponseEntity<Response>(new Response(LocalDateTime.now(), HttpStatus.CREATED, true,
-				UserRegistrationSuccessMsg.Success001.getValue(), result), HttpStatus.CREATED);
+		
 
 	}
 

@@ -1,5 +1,6 @@
 package com.smartpay.model.roleandprivilege;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -13,10 +14,17 @@ import javax.persistence.Table;
 
 import com.smartpay.model.BaseEntity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="Privilege")
 @Entity
 public class Privilege extends BaseEntity{
@@ -30,7 +38,7 @@ public class Privilege extends BaseEntity{
 	private String privilegeName;
 	
 	@ManyToMany(mappedBy = "privileges")
-	private Set<Role>  roles;
+	private Set<Role>  roles=new HashSet<>();
 	
 
 

@@ -5,7 +5,9 @@ import com.smartpay.enums.ErrorMsg;
 public enum UserRegistrationSuccessMsg {
 	
 
-	Success001("Invalid input!! Please check");
+	Success001("User registered successfully"),
+	Success002("Otp sent successfully!!!"),
+	Success003(" Otp Verified!!!");
 	
 	private String value;
 	
