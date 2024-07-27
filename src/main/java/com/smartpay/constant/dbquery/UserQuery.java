@@ -6,7 +6,10 @@ public class UserQuery {
 	
 	public static final String ADMIN_INFO_BY_ACTIVE_STATUS="SELECT user.username,user.userIdentifactionNo,user.customerId,user.role FROM User user where user.username like 'AD%' AND  user.isActive=:isActive";
 			
-	public static final String USER_BY_USERNAME = "SELECT user FROM User user where user.username=:username ";
+	public static final String USER_BY_USERNAME = "SELECT user FROM User user where user.username=:username AND user.isActive=:isActive ";
+	
+	
+
 	
 
 }

@@ -56,7 +56,7 @@ public class AdminServiceImpl implements AdminService {
 			userRegistration.setMobileNo(userDto.getMobileNo());
 			userRegistration.setDateOfBirth(StringUtil.convertStringToDate(userDto.getDateOfBirth()));
 			userRegistration.setIsActive(EnumValue.IsActive.ACTIVE.toString());
-			userRegistration.setBankingServiceStatus(EnumValue.BankingServiceStatus.NO.toString());
+			userRegistration.setBankingServiceStatus(EnumValue.YESNO.NO.toString());
 			userRegistration.setCustomerId(StringUtil.generateRandomNumber());
 			userRegistration.setUsername("AD" + StringUtil.generateLastSixDigit(userDto.getMobileNo()));
 			userRegistration.setParentUserName("undefined");

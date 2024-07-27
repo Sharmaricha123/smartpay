@@ -2,8 +2,6 @@ package com.smartpay.service.serviceImpl;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
-import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.smartpay.dto.UserDto;
 import com.smartpay.enums.EnumValue;
 import com.smartpay.enums.ErrorMsg;
-import com.smartpay.enums.EnumValue.BankingServiceStatus;
+import com.smartpay.enums.EnumValue.YESNO;
 import com.smartpay.enums.EnumValue.IsActive;
 import com.smartpay.enums.EnumValue.UserRole;
 import com.smartpay.exception.SmartPayExceptionHandle;
@@ -61,7 +59,7 @@ public class UserServiceImpl implements UserService {
 			userRegistration.setMobileNo(userDto.getMobileNo());
 			userRegistration.setDateOfBirth(StringUtil.convertStringToDate(userDto.getDateOfBirth()));
 			userRegistration.setIsActive(EnumValue.IsActive.ACTIVE.toString());
-			userRegistration.setBankingServiceStatus(EnumValue.BankingServiceStatus.NO.toString());
+			userRegistration.setBankingServiceStatus(EnumValue.YESNO.NO.toString());
 			userRegistration.setCustomerId(StringUtil.generateRandomNumber());
 			userRegistration.setUsername("IR" + StringUtil.generateLastSixDigit(userDto.getMobileNo()));
 

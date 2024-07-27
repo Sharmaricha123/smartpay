@@ -24,7 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.smartpay.enums.EnumValue.BankingServiceStatus;
+import com.smartpay.enums.EnumValue.YESNO;
 import com.smartpay.enums.EnumValue.IsActive;
 import com.smartpay.model.roleandprivilege.Role;
 

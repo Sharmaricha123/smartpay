@@ -10,7 +10,8 @@ public enum ErrorMsg {
 	Error005("Error in sending Otp!!!"),
 	Error006("User not found!!"),
 	Error007("Invalid OTP!!!"),
-	Error008("Invalid user!!");
+	Error008("Invalid user!!"),
+	Error009("User Profile already updated to merchant");
 	
 	private String value;
 	

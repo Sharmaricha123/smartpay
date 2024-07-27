@@ -43,18 +43,36 @@ public class EnumValue {
 		}
 
 	}
-	
-	public enum BankingServiceStatus{
-		YES,
-		NO
-		
+
+	public enum YESNO {
+		YES, NO
+
 	}
-	
-	public enum IsActive{
-		
-		ACTIVE,
-		INACTIVE
+
+	public enum IsActive {
+
+		ACTIVE, INACTIVE
 	}
-	
-	
+
+	public enum MartialStatus {
+		MARRIED, UMMARRIED
+	}
+
+	public enum Gender {
+		MALE, FEMALE, TRANSGENDER
+	}
+
+	public enum BusinessType {
+		INDIVIDUAL, SOLEPROPRIETORSHIP, PARTNERSHIPFIRM;
+	}
+
+	public enum AccountType {
+		CURRENT, SAVING;
+	}
+
+	public enum AddressType {
+		CURRENTADDRESS, PERMANENTADDRESS;
+
+	}
+
 }

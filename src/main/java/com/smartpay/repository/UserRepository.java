@@ -25,6 +25,6 @@ public interface UserRepository extends JpaRepository<User, String>{
     UserDetailsTo findAdminUser(@Param("isActive") String isActive);
     
     @Query(value=UserQuery.USER_BY_USERNAME)
-    User findUserByUsername(@Param("username") String username);
+    User findUserByUsername(@Param("username") String username,@Param("isActive") String isActive);
 
 }

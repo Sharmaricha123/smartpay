@@ -2,38 +2,40 @@ package com.smartpay.exception;
 
 import org.apache.http.HttpStatus;
 
-public class UserRegistrationException extends RuntimeException {
+public class UserProfileAlreadyUpdated extends RuntimeException {
 	
 	private HttpStatus httpStatus;
 
-	public UserRegistrationException(String message) {
-		super(message);
-
-	}
-
-	public UserRegistrationException() {
+	public UserProfileAlreadyUpdated() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserRegistrationException(String message, Throwable cause, boolean enableSuppression,
+	public UserProfileAlreadyUpdated(String message, Throwable cause, boolean enableSuppression,
 			boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserRegistrationException(String message, Throwable cause) {
+	public UserProfileAlreadyUpdated(String message, Throwable cause) {
 		super(message, cause);
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserRegistrationException(Throwable cause) {
+	public UserProfileAlreadyUpdated(String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
+
+	public UserProfileAlreadyUpdated(Throwable cause) {
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserRegistrationException(HttpStatus httpStatus) {
-		super();
+	
+
+	public UserProfileAlreadyUpdated(String message,HttpStatus httpStatus) {
+		super(message);
 		this.httpStatus = httpStatus;
 	}
 
@@ -45,6 +47,8 @@ public class UserRegistrationException extends RuntimeException {
 		this.httpStatus = httpStatus;
 	}
 
+	
+	
 	
 	
 	

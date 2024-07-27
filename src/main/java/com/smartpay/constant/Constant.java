@@ -15,5 +15,6 @@ public class Constant {
 	    public static final String ifscCode = "^[A-Z]{4}0[A-Z0-9]{6}$";
 	    public static final String datePattern="\\d{4}-\\d{2}-\\d{2}";
 	    public static final String twofactorapikey="117e66a7-1ff8-11ef-8b60-0200cd936042";
+	   
 
 }

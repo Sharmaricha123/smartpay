@@ -39,6 +39,13 @@ public class SmartPayExceptionHandle extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<ExceptionResponse>(exceptionResponse, ex.getHttpStatus());
 	}
 	
+	@ExceptionHandler(value = { ResourceNotFoundException.class })
+	public ResponseEntity<ExceptionResponse> handleResourceNotFoundException(ResourceNotFoundException ex) {
+		ExceptionResponse exceptionResponse = new ExceptionResponse(LocalDateTime.now(), HttpStatus.NOT_FOUND, false,
+				ex.getMessage(), null);
+		return new ResponseEntity<ExceptionResponse>(exceptionResponse, HttpStatus.NOT_FOUND);
+	}
+	
 	
 	@ExceptionHandler(value = { BadCredentialsException.class })
 	public ResponseEntity<ExceptionResponse> BadCredentialsException(SmartPayGlobalException ex) {
