@@ -74,5 +74,9 @@ public class EnumValue {
 		CURRENTADDRESS, PERMANENTADDRESS;
 
 	}
+	
+	public enum UploadType{
+		PENDING, SUCCESS, FAILED;
+	}
 
 }

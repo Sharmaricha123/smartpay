@@ -25,6 +25,13 @@ spring:
         format_sql: true
     show-sql: true
     
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 500KB
+      max-file-size: 10MB
+      max-request-size: 10MB
+      resolve-lazily: false  
 app:
   api:
     swagger:
@@ -38,3 +45,6 @@ app:
   refresh:
       token:
         validity: 12000000    
+        
+file:
+  upload-dir: E:/SMART-PAY-PROJECT/Document 

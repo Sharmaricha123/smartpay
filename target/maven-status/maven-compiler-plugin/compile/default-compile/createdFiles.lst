@@ -16,6 +16,8 @@ com\smartpay\service\serviceImpl\MerchantServiceImpl.class
 com\smartpay\dto\MerchantDto.class
 com\smartpay\enums\EnumValue$YESNO.class
 com\smartpay\repository\RoleRepository.class
+com\smartpay\model\MerchantDocument.class
+com\smartpay\enums\EnumValue$UploadType.class
 com\smartpay\enums\MerchantSuccessMsg.class
 com\smartpay\enums\EnumValue$AccountType.class
 com\smartpay\service\serviceImpl\RoleAndPrivilegeServiceImpl.class
@@ -47,6 +49,7 @@ com\smartpay\controller\MerchantController.class
 com\smartpay\enums\EnumValue$BusinessType.class
 com\smartpay\repository\UserRepository.class
 com\smartpay\enums\userRequest\UserRegistrationErrorMsg.class
+com\smartpay\configurations\FileStorageProperty.class
 com\smartpay\model\roleandprivilege\Role.class
 com\smartpay\Validation\MerchantDtoValidation.class
 com\smartpay\model\Merchant.class
@@ -55,9 +58,11 @@ com\smartpay\enums\EnumValue$UserRole.class
 com\smartpay\controller\UserController.class
 com\smartpay\service\MerchantService.class
 com\smartpay\dto\UserDto.class
+com\smartpay\configurations\FileConfiguration.class
 com\smartpay\model\User.class
 com\smartpay\exception\ResourceNotFoundException.class
 com\smartpay\enums\EnumValue$MartialStatus.class
 com\smartpay\repository\MerchantRepository.class
 com\smartpay\enums\EnumValue.class
+com\smartpay\repository\MerchantDocumentRepository.class
 com\smartpay\exception\SmartPayGlobalException.class

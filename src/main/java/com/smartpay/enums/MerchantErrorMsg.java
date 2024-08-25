@@ -64,7 +64,8 @@ public enum MerchantErrorMsg {
 	ME0060("Business Type is required !!!!!"),
 	ME0061("Account Type is required !!!!!"),
 	ME0062("Address Type is required !!!!!"),
-	ME0063("Error in updating profile !!!!!");
+	ME0063("Error in updating profile !!!!!"),
+	ME0064("Documents upload Failed !!!!!");
 	
 	private String value;
 

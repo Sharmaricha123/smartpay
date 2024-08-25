@@ -2,7 +2,8 @@ package com.smartpay.enums;
 
 public enum MerchantSuccessMsg {
 
-	MS001("User Profile updated to merchant !!!!!");
+	MS001("User Profile updated to merchant !!!!!"),
+	MS002("Document uploaded Successfully !!!!!");
 
 	private String value;
 

@@ -8,7 +8,7 @@ public class UserQuery {
 			
 	public static final String USER_BY_USERNAME = "SELECT user FROM User user where user.username=:username AND user.isActive=:isActive ";
 	
-	
+	public static final String UPDATE_USER_BANKING_STATUS="UPDATE User u SET u.bankingServiceStatus=:bankingStatus WHERE u.userIdentifactionNo=:userId AND u.isActive=:activeStatus";
 
 	
 

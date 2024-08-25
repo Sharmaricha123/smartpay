@@ -1,5 +1,7 @@
 package com.smartpay.utility;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,6 +41,18 @@ public class StringUtil {
 		Random r = new Random(System.currentTimeMillis());
 		return ((1 + r.nextInt(2)) * 10000 + r.nextInt(10000));
 
+	}
+	
+	public static String generateLastFourDigit(String input) {
+		String result = input.substring(8);
+		return result;
+
+	}
+	
+	public static String getSystemIpAddress() throws UnknownHostException {
+		  InetAddress inetAddress = InetAddress.getLocalHost();
+          String ipAddress = inetAddress.getHostAddress();
+          return ipAddress;
 	}
 
 }

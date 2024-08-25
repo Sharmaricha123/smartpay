@@ -6,27 +6,34 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.springframework.http.HttpStatus;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.smartpay.configurations.FileConfiguration;
 import com.smartpay.dto.AddressDto;
 import com.smartpay.dto.MerchantBankDetailsDto;
 import com.smartpay.dto.MerchantDto;
 import com.smartpay.enums.EnumValue;
+import com.smartpay.enums.ErrorMsg;
 import com.smartpay.exception.ResourceNotFoundException;
 import com.smartpay.exception.SmartPayGlobalException;
-import com.smartpay.enums.ErrorMsg;
 import com.smartpay.model.Address;
 import com.smartpay.model.AepsWallet;
 import com.smartpay.model.Merchant;
 import com.smartpay.model.MerchantBankDetails;
+import com.smartpay.model.MerchantDocument;
 import com.smartpay.model.User;
+import com.smartpay.repository.MerchantDocumentRepository;
 import com.smartpay.repository.MerchantRepository;
 import com.smartpay.repository.UserRepository;
 import com.smartpay.service.MerchantService;
+import com.smartpay.utility.StringUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class MerchantServiceImpl implements MerchantService {
 
@@ -36,13 +43,20 @@ public class MerchantServiceImpl implements MerchantService {
 	@Autowired
 	private MerchantRepository merchantRepository;
 
+	@Autowired
+	private MerchantDocumentRepository merchantDocumentRepository;
+
+	@Autowired
+	private FileConfiguration fileConfiguration;
+
 	@Override
 	public Merchant updateUserProfile(String username, MerchantDto merchantDto) {
 		User user = userRepository.findUserByUsername(username, EnumValue.IsActive.ACTIVE.toString());
 		if (user != null) {
-			Merchant merchant = merchantRepository
-					.findMerchantByUserIdentificationNumber(user.getUserIdentifactionNo());
+			Merchant merchant = merchantRepository.findMerchantByMerchantIdentificationNumber(
+					user.getUserIdentifactionNo(), EnumValue.IsActive.ACTIVE.toString());
 			if (merchant == null) {
+				log.debug("merchant {}", merchant);
 
 				Merchant merchantProfile = new Merchant();
 				merchantProfile.setGuardian(merchantDto.getGuardian());
@@ -59,7 +73,7 @@ public class MerchantServiceImpl implements MerchantService {
 				merchantProfile.setIsActive(EnumValue.IsActive.ACTIVE.toString());
 				merchantProfile.setAepsStatus(EnumValue.IsActive.INACTIVE.toString());
 				merchantProfile.setEkycStatus(EnumValue.IsActive.INACTIVE.toString());
-				merchantProfile.setUploadStatus(EnumValue.IsActive.INACTIVE.toString());
+				merchantProfile.setUploadStatus(EnumValue.UploadType.PENDING.toString());
 				merchantProfile.setBankOnboardStatus(EnumValue.IsActive.INACTIVE.toString());
 				merchantProfile.setFirstName(user.getFirstName());
 				merchantProfile.setMiddleName(user.getMiddleName());
@@ -86,6 +100,8 @@ public class MerchantServiceImpl implements MerchantService {
 				merchantProfile.setBankDetails(addBankDetails(merchantDto.getBankDetails(), merchantProfile));
 
 				Merchant savedMerchant = merchantRepository.save(merchantProfile);
+				userRepository.updateBankingServiceStatus(user.getUserIdentifactionNo(), EnumValue.YESNO.YES.toString(),
+						EnumValue.IsActive.ACTIVE.toString());
 				return savedMerchant;
 
 			} else {
@@ -134,6 +150,44 @@ public class MerchantServiceImpl implements MerchantService {
 
 		});
 		return addressDetails;
+
+	}
+
+	@Override
+	public MerchantDocument uploadMerchnatDocuments(String identificationNumber, MultipartFile[] files) {
+
+		Merchant merchant = merchantRepository.findMerchantByMerchantIdentificationNumber(identificationNumber,
+				EnumValue.IsActive.ACTIVE.toString());
+		if (merchant != null) {
+			log.debug("Check merchant is not null {}", merchant);
+			MerchantDocument docs = merchantDocumentRepository
+					.findMerchantDocumentByMerchantId(merchant.getMerchantIdentificationNo());
+			if (docs == null) {
+				log.debug("Check document is null {}", docs);
+				String fileLocation[] = fileConfiguration.storeFile(files,
+						StringUtil.generateLastFourDigit(merchant.getAdharcardNumber()));
+				MerchantDocument merchantDocument = new MerchantDocument();
+				merchantDocument.setAadharCardImagePath(fileLocation[0]);
+				merchantDocument.setPanCardImagePath(fileLocation[1]);
+				merchantDocument.setCancelledCheckPath(fileLocation[2]);
+				merchantDocument.setSignUploadPath(fileLocation[3]);
+				merchantDocument.setIsApproved(EnumValue.YESNO.NO.toString());
+				merchantDocument.setMerchantIdentificationNo(merchant.getMerchantIdentificationNo());
+				MerchantDocument savedMerchantDocument = merchantDocumentRepository.save(merchantDocument);
+				merchantRepository.updateUploadStatus(merchant.getMerchantIdentificationNo(),
+						EnumValue.UploadType.SUCCESS.toString(), EnumValue.YESNO.YES.toString());
+				log.info("merchantDocument {}", merchantDocument);
+				return savedMerchantDocument;
+			} else {
+				log.error("Documents already uploaded");
+				throw new ResourceNotFoundException("Documents Already Uploaded");
+			}
+
+		} else {
+			log.error("Merchnat Not Found");
+			throw new ResourceNotFoundException("Merchant Not found");
+
+		}
 
 	}
 

@@ -4,6 +4,7 @@ package com.smartpay.repository;
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -26,5 +27,9 @@ public interface UserRepository extends JpaRepository<User, String>{
     
     @Query(value=UserQuery.USER_BY_USERNAME)
     User findUserByUsername(@Param("username") String username,@Param("isActive") String isActive);
+    
+    @Modifying
+    @Query(value=UserQuery.UPDATE_USER_BANKING_STATUS)
+    void updateBankingServiceStatus(@Param("userId") String userId,@Param("bankingStatus")String bankingStatus,@Param("activeStatus") String activeStatus);
 
 }
