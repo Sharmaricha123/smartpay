@@ -3,6 +3,8 @@ com\smartpay\enums\MerchantErrorMsg.class
 com\smartpay\exception\UserRegistrationException.class
 com\smartpay\enums\userRequest\UserRegistrationSuccessMsg.class
 com\smartpay\exception\ExceptionResponse.class
+com\smartpay\bankingService\dto\MerchantModel.class
+com\smartpay\bankingService\dto\MerchantOnboardingDto.class
 com\smartpay\enums\EnumValue$Gender.class
 com\smartpay\model\MerchantBankDetails.class
 com\smartpay\constant\dbquery\MerchantQuery.class
@@ -10,6 +12,7 @@ com\smartpay\dto\AddressDto.class
 com\smartpay\SmartPayApplication.class
 com\smartpay\Validation\UserDtoValidation.class
 com\smartpay\enums\EnumValue$UserPrivilege.class
+com\smartpay\bankingService\service\OnboardingService.class
 com\smartpay\controller\AdminController.class
 com\smartpay\repository\PrivilegeRepository.class
 com\smartpay\service\serviceImpl\MerchantServiceImpl.class
@@ -17,6 +20,7 @@ com\smartpay\dto\MerchantDto.class
 com\smartpay\enums\EnumValue$YESNO.class
 com\smartpay\repository\RoleRepository.class
 com\smartpay\model\MerchantDocument.class
+com\smartpay\bankingService\controller\BankingServiceController.class
 com\smartpay\enums\EnumValue$UploadType.class
 com\smartpay\enums\MerchantSuccessMsg.class
 com\smartpay\enums\EnumValue$AccountType.class
@@ -34,12 +38,15 @@ com\smartpay\exception\SmartPayExceptionHandle.class
 com\smartpay\model\roleandprivilege\Privilege.class
 com\smartpay\response\Response.class
 com\smartpay\constant\dbquery\UserQuery.class
+com\smartpay\bankingService\dto\Kyc.class
 com\smartpay\model\Address.class
+com\smartpay\bankingService\dto\MerchantAddress.class
 com\smartpay\exception\UserProfileAlreadyUpdated.class
 com\smartpay\configurations\SwaggerConfiguration.class
 com\smartpay\utility\Util.class
 com\smartpay\enums\ErrorMsg.class
 com\smartpay\exception\RestClientException.class
+com\smartpay\bankingService\serviceImpl\OnboardingServiceImpl.class
 com\smartpay\dto\MerchantBankDetailsDto.class
 com\smartpay\to\UserDetailsTo.class
 com\smartpay\model\MainWallet.class
@@ -49,6 +56,7 @@ com\smartpay\controller\MerchantController.class
 com\smartpay\enums\EnumValue$BusinessType.class
 com\smartpay\repository\UserRepository.class
 com\smartpay\enums\userRequest\UserRegistrationErrorMsg.class
+com\smartpay\bankingService\dto\Settlement.class
 com\smartpay\configurations\FileStorageProperty.class
 com\smartpay\model\roleandprivilege\Role.class
 com\smartpay\Validation\MerchantDtoValidation.class

@@ -9,5 +9,5 @@ public class MerchantQuery {
 
 	public static final String UPDATE_MERCHANT_UPLOAD_STATUS="UPDATE Merchant m SET m.uploadStatus=:uploadStatus WHERE m.merchantIdentificationNo=:merchantId AND m.isActive=:activeStatus";
 	
-	public static final String FIND_MERCHANT_BY_USERNAME_AND_ONBOARD_STATUS="SELECT m FROM Merchant m WHERE m.username=:username AND m.bankOnboardStatus=:onboardingStatus";
+	public static final String FIND_MERCHANT_BY_USERNAME_AND_ONBOARD_STATUS="SELECT m FROM Merchant m WHERE m.userName= :username AND m.bankOnboardStatus= :onboardingStatus";
 }
