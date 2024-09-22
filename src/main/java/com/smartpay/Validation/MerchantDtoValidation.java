@@ -26,28 +26,23 @@ public class MerchantDtoValidation {
 		validateCompanyLegalName(merchantDto.getLegalName());
 		validateCompanyMarketingName(merchantDto.getMarketingName());
 		validateGender(merchantDto.getGender());
-		if(!merchantDto.getAddress().isEmpty())
-		{
-			merchantDto.getAddress().forEach(address->{
+		if (!merchantDto.getAddress().isEmpty()) {
+			merchantDto.getAddress().forEach(address -> {
 				validateMerchantAddress(address);
 			});
-			
-		}else
-		{
+
+		} else {
 			errorList.add("");
 		}
-		
-		if(!merchantDto.getBankDetails().isEmpty())
-		{
-			merchantDto.getBankDetails().forEach(bankdetails->{
+
+		if (!merchantDto.getBankDetails().isEmpty()) {
+			merchantDto.getBankDetails().forEach(bankdetails -> {
 				validateMerchantBankDetails(bankdetails);
 			});
-			
-		}else
-		{
+
+		} else {
 			errorList.add("");
 		}
-		
 
 		return errorList;
 	}
@@ -72,18 +67,17 @@ public class MerchantDtoValidation {
 	public static void validatePanCard(String pancardNumber) {
 		if (StringUtils.isNotBlank(pancardNumber)) {
 			if (pancardNumber.length() == 10) {
-				
+
 				if (!pancardNumber.matches(Constant.panCardPattern)) {
 					errorList.add(MerchantErrorMsg.ME005.getValue());
 				}
-				
+
 			} else {
 				errorList.add(MerchantErrorMsg.ME004.getValue());
-				
+
 			}
 		}
 
-		
 	}
 
 	public static void validateAadharCard(String aadharcardNumber) {
@@ -206,7 +200,7 @@ public class MerchantDtoValidation {
 		}
 
 	}
-	
+
 	public static List<String> validateMerchantAddress(AddressDto addressDto) {
 
 		validateAddress(addressDto.getAddress());
@@ -218,14 +212,13 @@ public class MerchantDtoValidation {
 		validateAddressType(addressDto.getAddressType());
 		return errorList;
 	}
-	
+
 	public static void validateAddress(String address) {
 		if (StringUtils.isNotBlank(address)) {
 			if (address.length() < 1 || address.length() > 200) {
 				errorList.add(MerchantErrorMsg.ME0025.getValue());
 
-			} 
-			
+			}
 
 		} else {
 			errorList.add(MerchantErrorMsg.ME0027.getValue());
@@ -315,15 +308,13 @@ public class MerchantDtoValidation {
 			errorList.add(MerchantErrorMsg.ME0042.getValue());
 		}
 	}
-	
-	public static void validateAddressType(String addressType)
-	{
-		if(StringUtils.isBlank(addressType))
-		{
+
+	public static void validateAddressType(String addressType) {
+		if (StringUtils.isBlank(addressType)) {
 			errorList.add(MerchantErrorMsg.ME0062.getValue());
 		}
 	}
-	
+
 	public static List<String> validateMerchantBankDetails(MerchantBankDetailsDto merchantBankDetailsDto) {
 		validateAccountHolderName(merchantBankDetailsDto.getAccountHolderName());
 		validateBankName(merchantBankDetailsDto.getBankName());
@@ -331,11 +322,10 @@ public class MerchantDtoValidation {
 		validateAccountNumber(merchantBankDetailsDto.getAccountNumber());
 		validateIfscNumber(merchantBankDetailsDto.getIfscCode());
 		validateAccountType(merchantBankDetailsDto.getAccountType());
-		
 
 		return errorList;
 	}
-	
+
 	public static void validateAccountHolderName(String accounHolderName) {
 		if (StringUtils.isNotBlank(accounHolderName)) {
 			if (accounHolderName.length() < 1 || accounHolderName.length() > 200) {
@@ -352,7 +342,7 @@ public class MerchantDtoValidation {
 		}
 
 	}
-	
+
 	public static void validateBankName(String bankName) {
 		if (StringUtils.isNotBlank(bankName)) {
 			if (bankName.length() < 1 || bankName.length() > 200) {
@@ -369,7 +359,7 @@ public class MerchantDtoValidation {
 		}
 
 	}
-	
+
 	public static void validateBranchName(String branchName) {
 		if (StringUtils.isNotBlank(branchName)) {
 			if (branchName.length() < 1 || branchName.length() > 200) {
@@ -386,29 +376,28 @@ public class MerchantDtoValidation {
 		}
 
 	}
-	
-	public static void validateAccountNumber(String accountNumber)
-	{
-		
-		if (StringUtils.isNotBlank(accountNumber)) {
-			if (accountNumber.length() ==12) {
-				errorList.add(MerchantErrorMsg.ME0052.getValue());
 
-			} else {
+	public static void validateAccountNumber(String accountNumber) {
+
+		if (StringUtils.isNotBlank(accountNumber)) {
+			if (accountNumber.length() == 12) {
 				if (!accountNumber.matches(Constant.bankAccNo)) {
 					errorList.add(MerchantErrorMsg.ME0053.getValue());
 				}
+
+			} else {
+				errorList.add(MerchantErrorMsg.ME0052.getValue());
+
 			}
 
 		} else {
 			errorList.add(MerchantErrorMsg.ME0054.getValue());
 		}
-		
+
 	}
-	
-	public static void validateIfscNumber(String ifscNumber)
-	{
-		
+
+	public static void validateIfscNumber(String ifscNumber) {
+
 		if (StringUtils.isNotBlank(ifscNumber)) {
 			if (ifscNumber.length() < 1 || ifscNumber.length() > 12) {
 				errorList.add(MerchantErrorMsg.ME0055.getValue());
@@ -422,16 +411,13 @@ public class MerchantDtoValidation {
 		} else {
 			errorList.add(MerchantErrorMsg.ME0057.getValue());
 		}
-		
+
 	}
-	
-	public static void validateAccountType(String accountType)
-	{
-		if(StringUtils.isBlank(accountType))
-		{
+
+	public static void validateAccountType(String accountType) {
+		if (StringUtils.isBlank(accountType)) {
 			errorList.add(MerchantErrorMsg.ME0061.getValue());
 		}
 	}
-	
 
 }

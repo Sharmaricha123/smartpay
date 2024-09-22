@@ -9,6 +9,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.smartpay.constant.Constant;
 import com.smartpay.exception.RestClientException;
+import com.smartpay.exception.TwoFactorClientException;
 import com.smartpay.response.TwoFactorResponse;
 
 public class Util {
@@ -28,7 +29,8 @@ public class Util {
 
 			return twoFactorResponse;
 		} catch (HttpClientErrorException | HttpServerErrorException ex) {
-			throw new RestClientException(ex);
+			throw new TwoFactorClientException(ex);
+//			throw new RestClientException(ex);
 
 		}
 	}

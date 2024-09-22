@@ -74,7 +74,7 @@ public class MerchantServiceImpl implements MerchantService {
 				merchantProfile.setAepsStatus(EnumValue.IsActive.INACTIVE.toString());
 				merchantProfile.setEkycStatus(EnumValue.IsActive.INACTIVE.toString());
 				merchantProfile.setUploadStatus(EnumValue.UploadType.PENDING.toString());
-				merchantProfile.setBankOnboardStatus(EnumValue.IsActive.INACTIVE.toString());
+				merchantProfile.setBankOnboardStatus(EnumValue.YESNO.NO.toString());
 				merchantProfile.setFirstName(user.getFirstName());
 				merchantProfile.setMiddleName(user.getMiddleName());
 				merchantProfile.setLastName(user.getLastName());

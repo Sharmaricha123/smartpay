@@ -54,12 +54,13 @@ public class SmartPayExceptionHandle extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<ExceptionResponse>(exceptionResponse, ex.getHttpStatus());
 	}
 	
-	@ExceptionHandler(value= {RestClientException.class})
-	public ResponseEntity<ExceptionResponse> handleRestClient(RestClientException ex) throws JsonMappingException, JsonProcessingException
+	@ExceptionHandler(value= {TwoFactorClientException.class})
+	public ResponseEntity<ExceptionResponse> handleRestClient(TwoFactorClientException ex) throws JsonMappingException, JsonProcessingException
 	{
 		ExceptionResponse exceptionResponse=new ExceptionResponse();
 		if(ex.getHttpStatusCodeException() instanceof HttpClientErrorException|ex.getHttpStatusCodeException() instanceof HttpServerErrorException)
 		{
+			
 			TwoFactorResponse twoFactorResponse=new TwoFactorResponse();
 			String response=ex.getHttpStatusCodeException().getResponseBodyAsString();
 			twoFactorResponse=	objectMapper.readValue(response, TwoFactorResponse.class);

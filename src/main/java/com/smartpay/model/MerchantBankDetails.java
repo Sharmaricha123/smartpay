@@ -40,7 +40,7 @@ public class MerchantBankDetails extends BaseEntity {
 	@Size(min = 1, max = 200, message = "min 1 and max 200 character are allowed")
 	private String accountHolderName;
 
-	@Size(max = 20, message = "Account number should be 20 characters")
+	@Size( message = "Account number should be 12 characters")
 	@Column(name = "Account_Number", length = 20)
 	private String accountNumber;
 

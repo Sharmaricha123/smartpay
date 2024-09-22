@@ -26,4 +26,8 @@ public interface MerchantRepository extends JpaRepository<Merchant, String> {
 	
 	@Query(value=MerchantQuery.FIND_MERCHANT_BY_USERNAME_AND_ONBOARD_STATUS)
 	Merchant findMerchantByUsernameAndOnboardingStatus(@Param("username") String username,@Param("onboardingStatus")String onboardingStatus);
+	
+	@Modifying
+	@Query(value=MerchantQuery.UPDATE_BANK_ONBOARD_STATUS)
+	void updateOnboardStatus(@Param("userName") String userName,@Param("bankOnboardStatus")String bankOnboardStatus,@Param("activeStatus") String activeStatus);
 }

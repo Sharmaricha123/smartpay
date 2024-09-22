@@ -1,4 +1,5 @@
 com\smartpay\service\serviceImpl\MerchantServiceImplTest2.class
+com\smartpay\repository\MerchantRepositoryTest.class
 com\smartpay\service\serviceImpl\UserServiceImplTest2.class
 com\smartpay\SmartPayApplicationTests.class
 com\smartpay\repository\UserRepositoryTest.class
